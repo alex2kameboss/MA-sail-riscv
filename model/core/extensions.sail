@@ -31,6 +31,11 @@ scattered function currentlyEnabled
 // Note, these are sorted according to the canonical ordering vaguely described
 // in the `Subset Naming Convention` section of the unprivileged spec.
 
+// IMT extension
+enum clause extension = Ext_Zimt
+mapping clause extensionName = Ext_Zimt <-> "zimt"
+function clause hartSupports(Ext_Zimt) = config extensions.Zimt.supported
+
 // Integer Multiplication and Division; not Machine!
 enum clause extension = Ext_M
 mapping clause extensionName = Ext_M <-> "m"

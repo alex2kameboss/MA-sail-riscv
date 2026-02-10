@@ -122,6 +122,21 @@ extensions {
     }
   }
 
+  Zimt {
+    Zimt_types {
+      before sys
+      files extensions/Zimt/zimt_types.sail
+    }
+    Zimt_regs {
+      requires core, I, Zimt_types
+      files extensions/Zimt/zimt_regs.sail
+    }
+    Zimt_insts {
+      requires sys, core, I, Zimt_types, Zimt_regs
+      files extensions/Zimt/zimt_insts.sail
+    }
+  }
+
   // RISC-V Bit manipulation extensions
   B {
     B_types {

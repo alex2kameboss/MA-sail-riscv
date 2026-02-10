@@ -169,6 +169,9 @@
     "wfi_is_nop": true
   },
   "extensions": {
+    "Zimt": {
+      "supported": true
+    },
     "M": {
       "supported": true
     },
