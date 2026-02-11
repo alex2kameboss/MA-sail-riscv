@@ -362,7 +362,7 @@ function clause execute(V2DST(imm, rs1, md)) = {
 			addr = addr + w;
 			j = j + 1;
 		};
-		i = i+1;
+		i = i + 1;
 	};
 	RETIRE_SUCCESS
 }
@@ -389,9 +389,9 @@ function clause execute(V2DADD_VV(ms2, ms1, md)) = {
 	while(i < height) {
 		var j : int = 0;
 		while ( j < width ) {
-			let idx_op1 = (unsigned(m_op1.prf_x) + i) * 1024 + unsigned(m_op1.prf_y) + j;
-			let idx_op2 = (unsigned(m_op2.prf_x) + i) * 1024 + unsigned(m_op2.prf_y) + j;
-			let idx_rez = (unsigned(m_rez.prf_x) + i) * 1024 + unsigned(m_rez.prf_y) + j;
+			let idx_op1 : int = (unsigned(m_op1.prf_x) + i) * 1024 + unsigned(m_op1.prf_y) + j;
+			let idx_op2 : int = (unsigned(m_op2.prf_x) + i) * 1024 + unsigned(m_op2.prf_y) + j;
+			let idx_rez : int = (unsigned(m_rez.prf_x) + i) * 1024 + unsigned(m_rez.prf_y) + j;
 			
 			var op1 : int = 0;
 			var op2 : int = 0;
