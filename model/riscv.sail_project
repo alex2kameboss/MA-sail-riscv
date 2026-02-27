@@ -128,6 +128,7 @@ extensions {
   Zimt {
     Zimt_types {
       before sys
+      requires core
       files extensions/Zimt/zimt_types.sail
     }
     Zimt_regs {
