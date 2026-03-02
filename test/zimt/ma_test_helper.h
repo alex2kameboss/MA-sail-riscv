@@ -1,0 +1,138 @@
+#ifndef MA_TEST_HELPER_H
+#define MA_TEST_HELPER_H
+
+#ifndef RND_FACTOR
+#define RND_FACTOR 10
+#endif
+
+#ifndef DEBUG_EN
+#define DEBUG_EN 0
+#endif
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <runtime.h>
+
+#define DEBUG(DTYPE) \
+void debug_##DTYPE(DTYPE *a, DTYPE *b, DTYPE *res_sw, DTYPE *res_hw, int m, int n, int p) { \
+    if ( DEBUG_EN ) { \
+        printf("\na = \n"); \
+        print_array_##DTYPE(a, n, m); \
+        printf("b = \n"); \
+        print_array_##DTYPE(b, p, n); \
+        printf("sw = \n"); \
+        print_array_##DTYPE(res_sw, p, m); \
+        printf("hw = \n"); \
+        print_array_##DTYPE(res_hw, p, m); \
+    } \
+} \
+void debug_vs_##DTYPE(DTYPE *a, DTYPE b, DTYPE *res_sw, DTYPE *res_hw, int m, int n, int p) { \
+    if ( DEBUG_EN ) { \
+        printf("\na = \n"); \
+        print_array_##DTYPE(a, n, m); \
+        printf("b = %d\n", b); \
+        printf("sw = \n"); \
+        print_array_##DTYPE(res_sw, p, m); \
+        printf("hw = \n"); \
+        print_array_##DTYPE(res_hw, p, m); \
+    } \
+} 
+
+#define PRINT_ARRAY(DTYPE) \
+void print_array_##DTYPE(DTYPE *ptr, int w, int h) { \
+    for (int i = 0; i < h; ++i) { \
+        for (int j = 0; j < w; ++j) \
+            printf("%#08x ", ptr[i * w + j]); \
+        printf("\n"); \
+    } \
+} 
+
+#define VECTOR_VECTOR_OPERATION_FN(DTYPE, NAME, OP) \
+void NAME##_##DTYPE(DTYPE *a, DTYPE *b, DTYPE *c, int m, int n, int p) { \
+    for (int i = 0; i < m; ++i) { \
+        for (int j = 0; j < n; ++j) { \
+            c[i * n + j] = a[i * n + j] OP b[i * n + j]; \
+        } \
+    } \
+} 
+
+#define VECTOR_SCALAR_OPERATION_FN(DTYPE, NAME, OP) \
+void NAME##_##DTYPE(DTYPE *a, DTYPE b, DTYPE *c, int m, int n, int p) { \
+    for (int i = 0; i < m; ++i) { \
+        for (int j = 0; j < n; ++j) { \
+            c[i * n + j] = a[i * n + j] OP b; \
+        } \
+    } \
+} 
+
+#define CONVOLUTION(DTYPE) \
+    void print_array_cnv_##DTYPE(DTYPE *ptr, int w, int h, int hw_w) { \
+        for (int i = 0; i < h; ++i) { \
+            for (int j = 0; j < w; ++j) \
+                printf("%#08x ", ptr[i * hw_w + j]); \
+            printf("\n"); \
+        } \
+    } \
+    void debug_cnv_##DTYPE(DTYPE *a, DTYPE *b, DTYPE *res_sw, DTYPE *res_hw, int m, int n, int k_m, int k_n, int kernel_n) { \
+        if ( DEBUG_EN ) { \
+            printf("\na = \n"); \
+            print_array_##DTYPE(a, n, m); \
+            printf("b = \n"); \
+            print_array_##DTYPE(b, k_n, k_m); \
+            printf("sw = \n"); \
+            print_array_##DTYPE(res_sw, m - k_m + 1, n - k_n + 1); \
+            printf("hw = \n"); \
+            print_array_##DTYPE(res_hw, m - k_m + 1, n - k_n + 1); \
+        } \
+    } \
+    void cnv_##DTYPE(DTYPE *a, DTYPE *b, DTYPE *c, int m, int n, int k_m, int k_n) { \
+        for (int i = 0; i < m - k_m + 1; ++i) { \
+            for (int j = 0; j < n - k_n + 1; ++j) { \
+                c[i * (n - k_n + 1) + j] = 0; \
+                for ( int ii = 0; ii < k_m; ++ii ) \
+                    for ( int jj = 0; jj < k_n; ++jj ) \
+                        c[i * (n - k_n + 1) + j] += a[(i + ii) * n + j + jj] * b[ii * k_n + jj]; \
+            } \
+        } \
+    } \
+    bool cmp_cnv_##DTYPE(DTYPE* src1, DTYPE* src2, int w, int h) { \
+        for (int i = 0; i < h; ++i) \
+            for (int j = 0; j < w; ++j) \
+                if (src1[i * w + j] != src2[i * w + j]) \
+                    return false; \
+        return true; \
+    } \
+
+#define INIT(DTYPE) \
+    void init_array_##DTYPE(DTYPE *ptr, int w, int h) { \
+        for (int i = 0; i < h; ++i) \
+            for (int j = 0; j < w; ++j) \
+                ptr[i * w + j] = 1; \
+    } \
+    bool cmp_##DTYPE(DTYPE* src1, DTYPE* src2, int len) { \
+        for ( int i =0 ; i < len; ++i ) \
+            if (src1[i] != src2[i]) \
+                return false; \
+        return true; \
+    } \
+    void mult_##DTYPE(DTYPE *a, DTYPE *b, DTYPE *c, int m, int n, int p) { \
+        for (int i = 0; i < m; ++i) { \
+            for (int j = 0; j < p; ++j) { \
+                c[i * p + j] = 0; \
+                for (int k = 0; k < n; ++k) \
+                    c[i * p + j] += a[i * n + k] * b[k * p + j]; \
+            } \
+        } \
+    } \
+    VECTOR_VECTOR_OPERATION_FN(DTYPE, add, +) \
+    VECTOR_VECTOR_OPERATION_FN(DTYPE, sub, -) \
+    VECTOR_VECTOR_OPERATION_FN(DTYPE, div, /) \
+    VECTOR_VECTOR_OPERATION_FN(DTYPE, smult, *) \
+    VECTOR_SCALAR_OPERATION_FN(DTYPE, sll, <<) \
+    VECTOR_SCALAR_OPERATION_FN(DTYPE, sra, >>) \
+    PRINT_ARRAY(DTYPE) \
+    DEBUG(DTYPE) \
+    CONVOLUTION(DTYPE)
+
+#endif
