@@ -33,7 +33,7 @@ function clause execute(V2DDEFU8(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEFU8(rs2, rs1, md)
 	
-<-> "v2ddefu8" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddefu8" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDEF8 : (regidx, regidx, mregidx)
@@ -57,7 +57,7 @@ function clause execute(V2DDEF8(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEF8(rs2, rs1, md)
 	
-<-> "v2ddef8" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddef8" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDEFU16 : (regidx, regidx, mregidx)
@@ -81,7 +81,7 @@ function clause execute(V2DDEFU16(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEFU16(rs2, rs1, md)
 	
-<-> "v2ddefu16" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddefu16" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDEF16 : (regidx, regidx, mregidx)
@@ -105,7 +105,7 @@ function clause execute(V2DDEF16(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEF16(rs2, rs1, md)
 	
-<-> "v2ddef16" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddef16" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDEFU32 : (regidx, regidx, mregidx)
@@ -129,7 +129,7 @@ function clause execute(V2DDEFU32(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEFU32(rs2, rs1, md)
 	
-<-> "v2ddefu32" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddefu32" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDEF32 : (regidx, regidx, mregidx)
@@ -153,7 +153,7 @@ function clause execute(V2DDEF32(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DDEF32(rs2, rs1, md)
 	
-<-> "v2ddef32" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2ddef32" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DLOC_RECT : (regidx, regidx, mregidx)
@@ -176,7 +176,7 @@ function clause execute(V2DLOC_RECT(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DLOC_RECT(rs2, rs1, md)
 	
-<-> "v2dloc.rect" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2dloc.rect" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DLOC_ROW : (regidx, regidx, mregidx)
@@ -199,7 +199,7 @@ function clause execute(V2DLOC_ROW(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DLOC_ROW(rs2, rs1, md)
 	
-<-> "v2dloc.row" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2dloc.row" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DLOC_COL : (regidx, regidx, mregidx)
@@ -222,7 +222,7 @@ function clause execute(V2DLOC_COL(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DLOC_COL(rs2, rs1, md)
 	
-<-> "v2dloc.col" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2dloc.col" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DLOC_TRECT : (regidx, regidx, mregidx)
@@ -245,7 +245,7 @@ function clause execute(V2DLOC_TRECT(rs2, rs1, md)) = {
 
 mapping clause assembly = V2DLOC_TRECT(rs2, rs1, md)
 	
-<-> "v2dloc.trect" ^ spc() ^ reg_name(rs2) ^ sep() ^ reg_name(rs1) ^ sep() ^ mreg_name(md)
+<-> "v2dloc.trect" ^ spc() ^ mreg_name(md) ^ sep() ^ reg_name(rs1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DLD : (bits(12), regidx, mregidx)
@@ -311,7 +311,7 @@ function clause execute(V2DLD(imm, rs1, md)) = {
 
 mapping clause assembly = V2DLD(imm, rs1, md)
 	
-<-> "v2dld" ^ spc() ^ reg_name(rs1) ^ sep() ^ mreg_name(md) ^ sep() ^ hex_bits_12(imm)
+<-> "v2dld" ^ spc() ^ mreg_name(md) ^ sep() ^ hex_bits_12(imm) ^ "(" ^ reg_name(rs1) ^  ")"
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DST : (bits(12), regidx, mregidx)
@@ -369,7 +369,7 @@ function clause execute(V2DST(imm, rs1, md)) = {
 
 mapping clause assembly = V2DST(imm, rs1, md)
 	
-<-> "v2dst" ^ spc() ^ reg_name(rs1) ^ sep() ^ mreg_name(md) ^ sep() ^ hex_bits_12(imm)
+<-> "v2dst" ^ spc() ^ mreg_name(md) ^ sep() ^ hex_bits_12(imm) ^ "(" ^ reg_name(rs1) ^  ")"
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DADD_VV : (mregidx, mregidx, mregidx)
@@ -419,7 +419,7 @@ function clause execute(V2DADD_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DADD_VV(ms2, ms1, md)
 	
-<-> "v2dadd.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dadd.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DSUB_VV : (mregidx, mregidx, mregidx)
@@ -469,7 +469,7 @@ function clause execute(V2DSUB_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DSUB_VV(ms2, ms1, md)
 	
-<-> "v2dsub.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsub.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DCNV_VV : (mregidx, mregidx, mregidx)
@@ -534,7 +534,7 @@ function clause execute(V2DCNV_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DCNV_VV(ms2, ms1, md)
 	
-<-> "v2dcnv.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dcnv.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDIV_VV : (mregidx, mregidx, mregidx)
@@ -586,7 +586,7 @@ function clause execute(V2DDIV_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DDIV_VV(ms2, ms1, md)
 	
-<-> "v2ddiv.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2ddiv.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DMUL_VV : (mregidx, mregidx, mregidx)
@@ -644,7 +644,7 @@ function clause execute(V2DMUL_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DMUL_VV(ms2, ms1, md)
 	
-<-> "v2dmul.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dmul.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DSMUL_VV : (mregidx, mregidx, mregidx)
@@ -694,7 +694,7 @@ function clause execute(V2DSMUL_VV(ms2, ms1, md)) = {
 
 mapping clause assembly = V2DSMUL_VV(ms2, ms1, md)
 	
-<-> "v2dsmul.vv" ^ spc() ^ mreg_name(ms2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsmul.vv" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(ms2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DADD_VS : (regidx, mregidx, mregidx)
@@ -741,7 +741,7 @@ function clause execute(V2DADD_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DADD_VS(rs2, ms1, md)
 	
-<-> "v2dadd.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dadd.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DSUB_VS : (regidx, mregidx, mregidx)
@@ -788,7 +788,7 @@ function clause execute(V2DSUB_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DSUB_VS(rs2, ms1, md)
 	
-<-> "v2dsub.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsub.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DDIV_VS : (regidx, mregidx, mregidx)
@@ -837,7 +837,7 @@ function clause execute(V2DDIV_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DDIV_VS(rs2, ms1, md)
 	
-<-> "v2ddiv.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2ddiv.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 union clause instruction = V2DMUL_VS : (regidx, mregidx, mregidx)
@@ -884,7 +884,7 @@ function clause execute(V2DMUL_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DMUL_VS(rs2, ms1, md)
 	
-<-> "v2dmul.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dmul.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 
@@ -928,7 +928,7 @@ function clause execute(V2DSLL_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DSLL_VS(rs2, ms1, md)
 	
-<-> "v2dsll.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsll.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 
@@ -972,7 +972,7 @@ function clause execute(V2DSRL_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DSRL_VS(rs2, ms1, md)
 	
-<-> "v2dsrl.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsrl.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 
@@ -1016,7 +1016,7 @@ function clause execute(V2DSRA_VS(rs2, ms1, md)) = {
 
 mapping clause assembly = V2DSRA_VS(rs2, ms1, md)
 	
-<-> "v2dsra.vs" ^ spc() ^ reg_name(rs2) ^ sep() ^ mreg_name(ms1) ^ sep() ^ mreg_name(md)
+<-> "v2dsra.vs" ^ spc() ^ mreg_name(md) ^ sep() ^ mreg_name(ms1) ^ sep() ^ reg_name(rs2)
 	when currentlyEnabled(Ext_Zimt)
 
 
